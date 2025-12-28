@@ -423,37 +423,24 @@ Analysis: Bottleneck eliminated, throughput doubled
 ## Key Parameters (config.py)
 
 SIM_TIME = 480 minutes (8-hour shift)  
-Car arrivals: 8-12 minutes (uniform)
-
-Cleaning: 15-20 minutes, capacity 1
-
-Primer: 25-35 minutes, capacity 2
-
-Painting: 30-40 minutes, capacity 1
-
+Car arrivals: 8-12 minutes (uniform)  
+Cleaning: 15-20 minutes, capacity 1    
+Primer: 25-35 minutes, capacity 2  
+Painting: 30-40 minutes, capacity 1  
 Alert threshold: 3 cars in queue
 
 ## Real-Time Monitoring Example
 
 
-[8.5] Car 1 arrives at the system
-
-[8.5] Car 1 starts Cleaning (will take 17.3 min)
-
-[25.8] Car 1 finishes Cleaning
-
-[25.8] Car 1 starts Primer (will take 29.2 min)
-
-ALERT: Queue at Cleaning has 4 cars waiting at time 70.0
-
-[55.0] Car 1 finishes Primer
-
-[55.0] Car 1 starts Paint (will take 35.7 min)
-
-[90.7] Car 1 finishes Paint
-
-[90.7] Car 1 exits the system (Total time: 82.2 min)
-
+[8.5] Car 1 arrives at the system  
+[8.5] Car 1 starts Cleaning (will take 17.3 min)  
+[25.8] Car 1 finishes Cleaning  
+[25.8] Car 1 starts Primer (will take 29.2 min)  
+ALERT: Queue at Cleaning has 4 cars waiting at time 70.0  
+[55.0] Car 1 finishes Primer  
+[55.0] Car 1 starts Paint (will take 35.7 min)  
+[90.7] Car 1 finishes Paint  
+[90.7] Car 1 exits the system (Total time: 82.2 min)  
 
 ## Understanding Metrics
 
