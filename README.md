@@ -280,7 +280,6 @@ Max queue: 19 cars
 
 Analysis: Bottleneck eliminated, throughput doubled
 
-## Before vs After Comparison
 
 ## Before vs After Comparison
 
