@@ -3,17 +3,7 @@ import simpy
 import random
 import config
 
-
 def car_process(env, car_id, stations, metrics):
-    """
-    Simulates a car's journey through all three stations.
-    
-    Args:
-        env: SimPy environment
-        car_id: Unique car identifier
-        stations: Dictionary containing station resources
-        metrics: MetricsCollector instance
-    """
     arrival_time = env.now
     print(f"[{env.now:6.1f}] Car {car_id} arrives at the system")
     
@@ -51,18 +41,7 @@ def car_process(env, car_id, stations, metrics):
 
 
 def process_station(env, car_id, station_name, resource, station_metrics, min_time, max_time):
-    """
-    Process a car through a single station.
-    
-    Args:
-        env: SimPy environment
-        car_id: Unique car identifier
-        station_name: Name of the station
-        resource: SimPy Resource for the station
-        station_metrics: StationMetrics instance
-        min_time: Minimum processing time
-        max_time: Maximum processing time
-    """
+
     # Record queue length before requesting resource
     queue_length = len(resource.queue)
     station_metrics.record_queue_length(queue_length)
@@ -79,8 +58,7 @@ def process_station(env, car_id, station_name, resource, station_metrics, min_ti
         # Start processing
         process_time = random.uniform(min_time, max_time)
         station_metrics.start_processing(env.now)
-        #print(f"[{env.now:6.1f}] Car {car_id} starts {station_name} (will take {process_time:.1f} min)")
-        
+        print(f"[{env.now:6.1f}] Car {car_id} starts {station_name}")
         yield env.timeout(process_time)
         
         # Finish processing
@@ -89,14 +67,6 @@ def process_station(env, car_id, station_name, resource, station_metrics, min_ti
 
 
 def car_generator(env, stations, metrics):
-    """
-    Generates cars arriving at the system.
-    
-    Args:
-        env: SimPy environment
-        stations: Dictionary containing station resources
-        metrics: MetricsCollector instance
-    """
     car_id = 0
     while True:
         # Create new car

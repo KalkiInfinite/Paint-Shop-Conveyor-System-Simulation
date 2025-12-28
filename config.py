@@ -1,5 +1,4 @@
 """Configuration parameters for paint shop simulation"""
-
 # Simulation time
 SIM_TIME = 480  # minutes (8 hours shift)
 

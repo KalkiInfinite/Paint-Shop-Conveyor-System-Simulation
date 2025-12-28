@@ -1,13 +1,9 @@
 """Real-time monitoring and alert system"""
-
 import simpy
 import config
 
-
 def queue_monitor(env, stations, metrics):
-    """
-    Monitors queue lengths and triggers alerts when threshold exceeded.
-    """
+    # Monitors queue lengths and triggers alerts when threshold exceeded.
     station_list = [
         ("Cleaning", stations['cleaning']),
         ("Primer", stations['primer']),
@@ -33,8 +29,6 @@ def queue_monitor(env, stations, metrics):
 
 
 def utilization_monitor(env, stations, metrics):
-    """
-    Periodically samples resource utilization.
-    """
+    # Periodically samples resource utilization.
     while True:
         yield env.timeout(10)
