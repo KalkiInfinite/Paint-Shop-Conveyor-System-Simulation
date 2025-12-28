@@ -311,9 +311,13 @@ Alert threshold: 3 cars in queue
 ALERT: Queue at Cleaning has 4 cars waiting at time 70.0
 
 [55.0] Car 1 finishes Primer
+
 [55.0] Car 1 starts Paint (will take 35.7 min)
+
 [90.7] Car 1 finishes Paint
+
 [90.7] Car 1 exits the system (Total time: 82.2 min)
+
 
 ## Understanding Metrics
 
@@ -327,3 +331,9 @@ System Time: Total time from arrival to exit. Includes all waits + processing
 Only 11-12 cars: Expected! Cleaning bottleneck by design. Test with CLEANING_CAPACITY = 2
 Terminal overflow: Reduce prints in process.py or save to file
 No CSV file: Run Option 2 (multiple runs) - creates results/ folder automatically
+
+## Author
+Piyush Tyagi
+
+## License
+Educational project for simulation coursework
