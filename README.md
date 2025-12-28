@@ -410,22 +410,27 @@ Analysis: Bottleneck eliminated, throughput doubled
 
 ## Before vs After Comparison
 
-Metric                  | Baseline (1 Painter) | Optimized (2 Painters) | Change
-Throughput             | 12 cars              | 23 cars                | +92%
-System Time            | 211.0 min            | 169.1 min              | -20%
-Cleaning Utilization   | 99.9%                | 96.5%                  | Still bottleneck
-Painting Utilization   | 86.8%                | 80.3%                  | Reduced
-Max Painting Queue     | 11 cars              | 1 cars                 | -91%
-Max Cleaning Queue     | 20 cars              | 19 cars                | -5%
-Alerts Triggered       | 4 times              | 2 times                | -50%
+| Metric | Baseline (1 Painter) | Optimized (2 Painters) | Change |
+|--------|---------------------|------------------------|--------|
+| Throughput | 12 cars | 23 cars | +92% |
+| System Time | 211.0 min | 169.1 min | -20% |
+| Cleaning Utilization | 99.9% | 96.5% | Still bottleneck |
+| Painting Utilization | 86.8% | 80.3% | Reduced |
+| Max Painting Queue | 11 cars | 1 car | -91% |
+| Max Cleaning Queue | 20 cars | 19 cars | -5% |
+| Alerts Triggered | 4 times | 2 times | -50% |
 
 ## Key Parameters (config.py)
 
-SIM_TIME = 480 minutes (8-hour shift)
+SIM_TIME = 480 minutes (8-hour shift)  
 Car arrivals: 8-12 minutes (uniform)
+
 Cleaning: 15-20 minutes, capacity 1
+
 Primer: 25-35 minutes, capacity 2
+
 Painting: 30-40 minutes, capacity 1
+
 Alert threshold: 3 cars in queue
 
 ## Real-Time Monitoring Example
