@@ -4,7 +4,9 @@
 Discrete event simulation of an automotive paint shop using SimPy. Models 3 sequential stations (Cleaning, Primer, Painting) to analyze throughput and identify bottlenecks.
 
 ## Installation
+```bash
 pip install simpy
+```
 
 ## Project Files
 - main.py: Simulation runner (single/multiple runs)
@@ -16,19 +18,24 @@ pip install simpy
 
 ## Running the Simulation
 
-Single Run (testing):
+**Single Run (testing):**  
+```bash
 python main.py
+```
 Enter: 1
 
-Multiple Runs (recommended for results):
+**Multiple Runs (recommended for results):**  
+```bash
 python main.py
-Enter: 2
+```
+Enter: 2  
 Enter: 5
 
 ## Output 1: Baseline Configuration (PAINTING_CAPACITY = 1)
 
-Single Run Result:
-Run 1:
+**Single Run Result:**  
+Run 1:  
+```
 === Paint Shop Simulation Results (480 minutes) ===
 Total cars completed: 12
 Average system time per car: 211.0 minutes
@@ -58,8 +65,10 @@ Max queue: 20 cars
 Optimization Suggestions:
 - Add a second painting machine (increase capacity to 2)
 - Reduce cleaning time through process improvement
+```
 
-Run 2:
+Run 2:  
+```
 === Paint Shop Simulation Results (480 minutes) ===
 Total cars completed: 12
 Average system time per car: 223.6 minutes
@@ -85,9 +94,11 @@ Bottleneck Analysis:
 Primary bottleneck: Cleaning station
 Utilization: 99.3%
 Max queue: 19 cars
+```
 
-Multiple Runs (20 runs):
-Results saved to: results/all_runs_summary.csv
+**Multiple Runs (20 runs):**  
+Results saved to: results/all_runs_summary.csv  
+```
 AGGREGATED RESULTS ACROSS ALL RUNS
 Number of runs: 20
 
@@ -106,10 +117,12 @@ Station Utilization:
   Paint: 86.8% (±2.3%)
 
 Analysis: Severe bottleneck at Cleaning station (98% utilization)
+```
 
-A complete log table of the execution:
+**A complete log table of the execution:**  
 This is for the Run 1 of the Single Run Result displayed first in the output above:
 
+```
 STARTING RUN 1
 [   0.0] Car 1 arrives at the system
 [  10.0] Car 2 arrives at the system
@@ -247,10 +260,12 @@ ALERT: Queue at Paint has 4 cars waiting at time 190.0
 [ 470.3] Car 25 finishes Primer
 [ 475.9] Car 48 arrives at the system
 [ 479.5] Car 27 finishes Cleaning
+```
 
 ## Output 2: Optimized Configuration (PAINTING_CAPACITY = 2)
 This is an example of if we increased a painting machine
 
+```
 === Paint Shop Simulation Results (480 minutes) ===
 Total cars completed: 23
 Average system time per car: 169.1 minutes
@@ -277,10 +292,8 @@ Primary bottleneck: Cleaning station
 Utilization: 96.5%
 Max queue: 19 cars
 
-
 Analysis: Bottleneck eliminated, throughput doubled
-
-## Before vs After Comparison
+```
 
 ## Before vs After Comparison
 
@@ -295,15 +308,16 @@ Alerts Triggered       | 4 times              | 2 times                | -50%
 
 ## Key Parameters (config.py)
 
-SIM_TIME = 480 minutes (8-hour shift)
-Car arrivals: 8-12 minutes (uniform)
-Cleaning: 15-20 minutes, capacity 1
-Primer: 25-35 minutes, capacity 2
-Painting: 30-40 minutes, capacity 1
-Alert threshold: 3 cars in queue
+- SIM_TIME = 480 minutes (8-hour shift)  
+- Car arrivals: 8-12 minutes (uniform)  
+- Cleaning: 15-20 minutes, capacity 1  
+- Primer: 25-35 minutes, capacity 2  
+- Painting: 30-40 minutes, capacity 1  
+- Alert threshold: 3 cars in queue
 
 ## Real-Time Monitoring Example
 
+```
 [8.5] Car 1 arrives at the system
 [8.5] Car 1 starts Cleaning (will take 17.3 min)
 [25.8] Car 1 finishes Cleaning
@@ -315,19 +329,20 @@ ALERT: Queue at Cleaning has 4 cars waiting at time 70.0
 [55.0] Car 1 starts Paint (will take 35.7 min)
 [90.7] Car 1 finishes Paint
 [90.7] Car 1 exits the system (Total time: 82.2 min)
+```
 
 ## Understanding Metrics
 
-Utilization: Percentage of time station is busy. High (>90%) = bottleneck
-Queue Length: Number of cars waiting. Max shows peak congestion
-Wait Time: Time in queue before processing. Excludes processing time
-System Time: Total time from arrival to exit. Includes all waits + processing
+- **Utilization:** Percentage of time station is busy. High (>90%) = bottleneck  
+- **Queue Length:** Number of cars waiting. Max shows peak congestion  
+- **Wait Time:** Time in queue before processing. Excludes processing time  
+- **System Time:** Total time from arrival to exit. Includes all waits + processing
 
 ## Troubleshooting
 
-Only 11-12 cars: Expected! Cleaning bottleneck by design. Test with CLEANING_CAPACITY = 2
-Terminal overflow: Reduce prints in process.py or save to file
-No CSV file: Run Option 2 (multiple runs) - creates results/ folder automatically
+- **Only 11-12 cars:** Expected! Cleaning bottleneck by design. Test with CLEANING_CAPACITY = 2  
+- **Terminal overflow:** Reduce prints in process.py or save to file  
+- **No CSV file:** Run Option 2 (multiple runs) - creates results/ folder automatically
 
 
 ## Author
