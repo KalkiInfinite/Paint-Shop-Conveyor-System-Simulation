@@ -303,9 +303,13 @@ Alert threshold: 3 cars in queue
 
 ## Real-Time Monitoring Example
 
+
 [8.5] Car 1 arrives at the system
+
 [8.5] Car 1 starts Cleaning (will take 17.3 min)
+
 [25.8] Car 1 finishes Cleaning
+
 [25.8] Car 1 starts Primer (will take 29.2 min)
 
 ALERT: Queue at Cleaning has 4 cars waiting at time 70.0
