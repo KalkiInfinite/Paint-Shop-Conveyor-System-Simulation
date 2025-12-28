@@ -1,20 +1,9 @@
-"""
-Utility functions for paint shop simulation analysis
-"""
+"""Utility functions for paint shop simulation analysis"""
 
 import config
 
-
+# Identify the bottleneck station based on utilization
 def identify_bottleneck(metrics):
-    """
-    Identify the bottleneck station based on utilization.
-    
-    Args:
-        metrics: MetricsCollector instance containing all station metrics
-    
-    Returns:
-        String with bottleneck station name
-    """
     stations = [
         ("Cleaning", metrics.cleaning_metrics),
         ("Primer", metrics.primer_metrics),
@@ -33,13 +22,8 @@ def identify_bottleneck(metrics):
     return station_name
 
 
+# Provide optimization recommendations based on bottleneck
 def suggest_optimization(bottleneck_name):
-    """
-    Provide optimization recommendations based on bottleneck.
-    
-    Args:
-        bottleneck_name: Name of the bottleneck station
-    """
     print(f"\nOptimization Suggestions:")
     
     if bottleneck_name == "Cleaning":
@@ -55,16 +39,8 @@ def suggest_optimization(bottleneck_name):
         print("- Use faster-drying paint to reduce cycle time")
 
 
+# Analyze queue behavior patterns across all stations
 def analyze_queue_patterns(metrics):
-    """
-    Analyze queue behavior patterns across all stations.
-    
-    Args:
-        metrics: MetricsCollector instance
-    
-    Returns:
-        Dictionary with queue analysis
-    """
     stations = {
         "Cleaning": metrics.cleaning_metrics,
         "Primer": metrics.primer_metrics,
@@ -97,16 +73,8 @@ def analyze_queue_patterns(metrics):
     return analysis
 
 
+# Calculate overall system efficiency
 def calculate_system_efficiency(metrics):
-    """
-    Calculate overall system efficiency.
-    
-    Args:
-        metrics: MetricsCollector instance
-    
-    Returns:
-        Dictionary with efficiency metrics
-    """
     cleaning_time_avg = (config.CLEANING_MIN + config.CLEANING_MAX) / 2
     painting_time_avg = (config.PAINTING_MIN + config.PAINTING_MAX) / 2
     
@@ -128,13 +96,8 @@ def calculate_system_efficiency(metrics):
     }
 
 
+# Compare station utilizations
 def compare_station_utilizations(metrics):
-    """
-    Compare station utilizations.
-    
-    Args:
-        metrics: MetricsCollector instance
-    """
     print(f"\nStation Utilization Comparison:")
     
     stations_data = [
@@ -148,25 +111,18 @@ def compare_station_utilizations(metrics):
         print(f"{name}: Capacity {capacity}, Utilization {util:.1f}%")
 
 
+# Suggest what-if scenarios for testing
 def generate_what_if_scenarios():
-    """
-    Suggest what-if scenarios for testing.
-    """
     print(f"\nSuggested What-If Scenarios:")
-    print("1. Increase cleaning capacity from 1 to 2")
+    print("1. Increase painting capacity from 1 to 2")
     print("2. Add third primer machine (capacity 2 to 3)")
     print("3. Reduce cleaning time to 10-15 minutes")
     print("4. Increase arrival interval to 10-14 minutes")
     print("5. Add second paint station (capacity 1 to 2)")
 
 
+# Run all analysis functions
 def run_full_analysis(metrics):
-    """
-    Run all analysis functions.
-    
-    Args:
-        metrics: MetricsCollector instance
-    """
     bottleneck = identify_bottleneck(metrics)
     suggest_optimization(bottleneck)
     analyze_queue_patterns(metrics)
